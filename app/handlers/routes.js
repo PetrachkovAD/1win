@@ -10,6 +10,12 @@ const router = new Router({ prefix: "/book" });
 
 router
   .get("/", async (ctx) => {
+    /*  Возвращаем список книг
+      //  Используется пагинация параметры (page-size и page)
+      //  Есть возможность фильтрации (search-text и search-date)
+      //  А так же сортировки результатов (sort-autor, sort-title, sort-date, sort-description)
+      //  Порядок сортировки следующий autor, title, date, description 
+    */
     let page = Number(ctx.query.page),
       pageSize = Number(ctx.query["page-size"]),
       searchString = ctx.query["search-text"],
@@ -75,6 +81,7 @@ router
     };
   })
   .get("/:id", async (ctx) => {
+    // Возращаем книгу по id
     let result = await ctx.myPool().query(
       "SELECT * FROM books WHERE id=?",
       [Number(ctx.params.id)]
@@ -86,6 +93,7 @@ router
     }
   })
   .post("/", async (ctx) => {
+    // Добавляем книгу в БД
     ctx.status = 201;
 
     const image = ctx.request.files.image;
@@ -130,6 +138,7 @@ router
     );
   })
   .put("/:id", async (ctx) => {
+    // Перезаписываем книгу по id
     ctx.status = 204;
     let id = ctx.params.id,
       book = ctx.request.body;
@@ -164,6 +173,7 @@ router
     }
   })
   .delete("/:id", async (ctx) => {
+    // Удаляем книгу по id
     ctx.status = 202;
     let id = ctx.params.id,
       dir = path.join(IMAGE_FOLDER, String(id));

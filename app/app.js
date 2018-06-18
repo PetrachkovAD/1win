@@ -6,7 +6,7 @@ import {STATIC_FOLDER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE, MYSQL_HOST} f
 import {routes} from "./handlers/routes";
 
 const app = new Koa();
-
+// Отлавливаем ошибки
 app.use(async (ctx, next) => {
   try {
     await next();
@@ -17,10 +17,11 @@ app.use(async (ctx, next) => {
     };
   }
 });
-
+// Отдаем статику
 app.use(require("koa-static")(STATIC_FOLDER));
 
 app.use(koaBody({ multipart: true }));
+// Подлкючаем БД
 app.use(
   mysql({
     user: MYSQL_USER,
@@ -29,6 +30,7 @@ app.use(
     host: MYSQL_HOST
   })
 );
+// Разрешаем кросс запросы
 app.use(cors({
   origin: "*"
 }));

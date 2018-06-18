@@ -92,6 +92,7 @@
 </template>
 
 <script>
+// Компонент списка книг, в нем происходит отображение фильтрация и сортировка
 import BookService from '@/services/BookService'
 import Pagination from './Pagination'
 import SearchString from './SearchString'
@@ -145,6 +146,7 @@ export default {
       this.searchDate = date
       this.getBooks(1)
     },
+    // TODO вынести в одну функцию
     sortAutor (direct) {
       if (this.sortByAutor !== direct) this.sortByAutor = direct
       else this.sortByAutor = ''
