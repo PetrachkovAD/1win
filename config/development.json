@@ -1,0 +1,9 @@
+{
+  "env": "development",
+  "mysql": {
+    "user": "root",
+    "password": "Qazwsx123",
+    "database": "1win",
+    "host": "localhost"
+  }
+}

@@ -1,3 +1,10 @@
+# Vagrant
+Vagrantfile
+.vagrant
+
+# DatabaseGenerator
+dataBase.py
+
 # Logs
 logs
 *.log

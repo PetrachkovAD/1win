@@ -1,0 +1,9 @@
+{
+  "env": "production",
+  "mysql": {
+    "user": "",
+    "password": "",
+    "database": "",
+    "host": ""
+  }
+}
