@@ -20,11 +20,11 @@
                 span.text
                   | Title
                 span.oi.oi-arrow-bottom(
-                  @click="sortTitle('down')",
+                  @click="sort('sortByTitle', 'down')",
                   :class="{ active : sortByTitle=='down' }"
                 )
                 span.oi.oi-arrow-top(
-                  @click="sortTitle('up')",
+                  @click="sort('sortByTitle', 'up')",
                   :class="{ active : sortByTitle=='up' }"
                 )
               th Image
@@ -32,33 +32,33 @@
                 span.text
                   | Date
                 span.oi.oi-arrow-bottom(
-                  @click="sortDate('down')",
+                  @click="sort('sortByDate', 'down')",
                   :class="{ active : sortByDate=='down' }"
                 )
                 span.oi.oi-arrow-top(
-                  @click="sortDate('up')",
+                  @click="sort('sortByDate', 'up')",
                   :class="{ active : sortByDate=='up' }"
                 )
               th
                 span.text
                   | Description
                 span.oi.oi-arrow-bottom(
-                  @click="sortDescription('down')",
+                  @click="sort('sortByDescription', 'down')",
                   :class="{ active : sortByDescription=='down' }"
                 )
                 span.oi.oi-arrow-top(
-                  @click="sortDescription('up')",
+                  @click="sort('sortByDescription', 'up')",
                   :class="{ active : sortByDescription=='up' }"
                 )
               th
                 span.text
                   | Autor
                 span.oi.oi-arrow-bottom(
-                  @click="sortAutor('down')",
+                  @click="sort('sortByAutor', 'down')",
                   :class="{ active : sortByAutor=='down' }"
                 )
                 span.oi.oi-arrow-top(
-                  @click="sortAutor('up')",
+                  @click="sort('sortByAutor', 'up')",
                   :class="{ active : sortByAutor=='up' }"
                 )
               th Action
@@ -146,25 +146,9 @@ export default {
       this.searchDate = date
       this.getBooks(1)
     },
-    // TODO вынести в одну функцию
-    sortAutor (direct) {
-      if (this.sortByAutor !== direct) this.sortByAutor = direct
-      else this.sortByAutor = ''
-      this.getBooks(1)
-    },
-    sortTitle (direct) {
-      if (this.sortByTitle !== direct) this.sortByTitle = direct
-      else this.sortByTitle = ''
-      this.getBooks(1)
-    },
-    sortDate (direct) {
-      if (this.sortByDate !== direct) this.sortByDate = direct
-      else this.sortByDate = ''
-      this.getBooks(1)
-    },
-    sortDescription (direct) {
-      if (this.sortByDescription !== direct) this.sortByDescription = direct
-      else this.sortByDescription = ''
+    sort (column, direct) {
+      if (this[column] !== direct) this[column] = direct
+      else this[column] = ''
       this.getBooks(1)
     }
   },
