@@ -70,7 +70,10 @@
               td {{ book.description }}
               td {{ book.autor }}
               td
-                router-link( :to="{ name: 'EditBook', params: { id: book.id } }" style="white-space: nowrap")
+                router-link(
+                  :to="{ name: 'EditBook', params: { id: book.id } }"
+                  style="white-space: nowrap"
+                )
                   | edit book
                 br
                 button.btn.btn-danger.btn-sm( type="button", @click="removeBook(book.id)" )

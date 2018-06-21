@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Books from '@/components/Books'
-import NewBook from '@/components/NewBook'
-import EditBook from '@/components/EditBook'
+import ChangeBook from '@/components/ChangeBook'
 
 Vue.use(Router)
 
@@ -17,12 +16,14 @@ export default new Router({
     {
       path: '/new',
       name: 'NewBook',
-      component: NewBook
+      component: ChangeBook,
+      props: { chage: 'create' }
     },
     {
       path: '/:id',
       name: 'EditBook',
-      component: EditBook
+      component: ChangeBook,
+      props: { chage: 'edit' }
     }
   ]
 })
