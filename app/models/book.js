@@ -1,10 +1,11 @@
 import dateFormat from "dateformat";
 import SqlString from "sqlstring";
+import {BOOK_TABLE} from "../config";
 
 const crud = {
   getList: async function({db, page, pageSize, search, sort}) {
-    let sqlString = "SELECT * from books",
-      sqlTotalCount = "SELECT COUNT(1) FROM books";
+    let sqlString = `SELECT * from ${BOOK_TABLE}`,
+      sqlTotalCount = `SELECT COUNT(1) FROM ${BOOK_TABLE}`;
 
     function getSearchSql(search) {
       let searchSql = "";
@@ -53,7 +54,7 @@ const crud = {
   },
   getBook: async function(db, id) {
     return await db.query(
-      "SELECT * FROM books WHERE id=?",
+      `SELECT * FROM ${BOOK_TABLE} WHERE id=?`,
       [Number(id)]
     );
   },
@@ -70,7 +71,7 @@ const crud = {
 
     return await db.query(
       SqlString.format(
-        "INSERT INTO books SET ? ON DUPLICATE KEY UPDATE ?",
+        `INSERT INTO ${BOOK_TABLE} SET ? ON DUPLICATE KEY UPDATE ?`,
         [book, book]
       )
     );
@@ -88,13 +89,13 @@ const crud = {
 
     return await db.query(
       SqlString.format(
-        "UPDATE books SET ? WHERE id=?",
+        `UPDATE ${BOOK_TABLE} SET ? WHERE id=?`,
         [book, Number(id)]
       )
     );
   },
   deleteBook: async function(db, id) {
-    return await db.query("DELETE FROM books WHERE id=?",[Number(id)]);
+    return await db.query(`DELETE FROM ${BOOK_TABLE} WHERE id=?`,[Number(id)]);
   }
 };
 

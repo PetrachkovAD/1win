@@ -10,6 +10,8 @@ const MYSQL_PASSWORD = process.env.MYSQL_PASSWORD || config.get("mysql.password"
 const MYSQL_DATABASE = process.env.MYSQL_DATABASE || config.get("mysql.database");
 const MYSQL_HOST = process.env.MYSQL_HOST || config.get("mysql.host");
 
+const BOOK_TABLE = process.env.BOOK_TABLE || config.get("bookTable");
+
 export {
   PORT,
   STATIC_FOLDER,
@@ -17,5 +19,6 @@ export {
   MYSQL_USER,
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
-  MYSQL_HOST
+  MYSQL_HOST,
+  BOOK_TABLE
 };
