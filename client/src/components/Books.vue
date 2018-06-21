@@ -135,7 +135,7 @@ export default {
       })
 
       this.books = response.data.books
-      this.totalBook = response.data.totalCount[0]['COUNT(1)']
+      this.totalBook = response.data.tCount[0]['COUNT(1)']
     },
     async removeBook (value) {
       await BookService.deleteBook(value)

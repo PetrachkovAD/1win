@@ -23,7 +23,7 @@
             textarea.form-control( type="text", rows="5", name="description", id="description", placeholder="Description", v-model.trim="description" required )
           .form-group
             .form-control
-              input( type="file", name="image", id="image", placeholder="Image", @change="sync" required )
+              input( type="file", name="image", id="image", placeholder="Image", @change="sync" :required="srcImage ? false : true" )
               div(v-if="srcImage")
                 img( :src="srcImage" width="100" style="padding-top: 8px;")
           .text-danger(v-if="errors.length")
