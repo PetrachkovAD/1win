@@ -14,6 +14,7 @@
           name="text"
           placeholder="Search"
           v-model="searchText"
+          @input="search()"
         )
         .input-group-append
           button.btn.btn-outline-secondary.mb-2.mr-sm-2( type="submit")
